@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 90%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 72% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 45 85% 55%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 0 72% 45%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 72% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 72% 45%;
+
+    /* Crime Investigation Theme Colors */
+    --blood-red: 0 72% 45%;
+    --paper-old: 40 30% 85%;
+    --paper-dark: 0 0% 18%;
+    --note-yellow: 45 85% 65%;
+    --lock-gold: 45 80% 55%;
+    --evidence-border: 0 0% 30%;
+    
+    /* Shadows */
+    --shadow-evidence: 0deg 0% 0% / 0.5;
+    --shadow-glow-red: 0 72% 45% / 0.3;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 90%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 72% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 45 85% 55%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 0 72% 45%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 72% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 72% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Amiri', serif;
+    cursor: default;
+  }
+
+  h1, h2, h3, h4, h5, h6, button {
+    font-family: 'Cairo', sans-serif;
+  }
+}
+
+@layer utilities {
+  .typewriter-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .evidence-card {
+    @apply bg-card border-2 border-evidence-border rounded-lg shadow-2xl;
+    box-shadow: 0 10px 30px -10px hsl(var(--shadow-evidence));
+  }
+
+  .sticky-note {
+    @apply bg-accent text-accent-foreground rounded-sm shadow-lg;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .locked-tab {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .board-cursor-grab {
+    cursor: grab;
+  }
+
+  .board-cursor-grabbing {
+    cursor: grabbing;
+  }
+
+  /* تنسيق أزرار التحكم في لوحة التحقيق */
+  .investigation-controls button {
+    @apply bg-card border-2 border-primary;
+  }
+
+  .investigation-controls button:hover {
+    @apply bg-primary/20;
+  }
+
+  .investigation-controls button svg {
+    fill: hsl(var(--primary));
+  }
+}
