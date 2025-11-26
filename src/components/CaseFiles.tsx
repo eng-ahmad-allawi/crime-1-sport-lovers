@@ -32,6 +32,7 @@ const CaseFiles = () => {
       unlockTab(currentTab + 1);
       setCurrentTab(currentTab + 1);
       setIsAnimating(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 600);
   };
 

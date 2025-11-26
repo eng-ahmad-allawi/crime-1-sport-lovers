@@ -17,6 +17,7 @@ import { Plus, FileText, ArrowRight } from 'lucide-react';
 import { suspects } from '@/data/caseData';
 import AccusationModal from './AccusationModal';
 import { useInvestigationStore } from '@/store/investigationStore';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const suspectPositions = [
   { x: 250, y: -200 },  // أعلى
@@ -82,6 +83,7 @@ const InvestigationBoard = () => {
   const [noteCounter, setNoteCounter] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { setOnBoard } = useInvestigationStore();
+  const isMobile = useIsMobile();
 
   const onConnect = useCallback(
     (params: Connection) => {
@@ -144,31 +146,31 @@ const InvestigationBoard = () => {
         <Background color="hsl(var(--muted-foreground))" gap={16} />
         <Controls className="investigation-controls" />
 
-        <Panel position="top-right" className="space-y-2">
+        <Panel position={isMobile ? "bottom-center" : "top-right"} className="space-y-2">
           <Button
             onClick={() => setOnBoard(false)}
             className="font-cairo font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full"
-            size="lg"
+            size={isMobile ? "default" : "lg"}
           >
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <ArrowRight className="ml-2 h-4 w-4" />
             العودة لملفات القضية
           </Button>
 
           <Button
             onClick={addStickyNote}
             className="font-cairo font-bold bg-accent text-accent-foreground hover:bg-accent/90"
-            size="lg"
+            size={isMobile ? "default" : "lg"}
           >
-            <Plus className="ml-2 h-5 w-5" />
+            <Plus className="ml-2 h-4 w-4" />
             إضافة ملاحظة
           </Button>
 
           <Button
             onClick={() => setIsModalOpen(true)}
             className="font-cairo font-bold bg-primary text-primary-foreground hover:bg-primary/90 w-full"
-            size="lg"
+            size={isMobile ? "default" : "lg"}
           >
-            <FileText className="ml-2 h-5 w-5" />
+            <FileText className="ml-2 h-4 w-4" />
             حل القضية
           </Button>
         </Panel>
